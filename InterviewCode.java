@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class InterviewCode {
 
     // Example 1
@@ -106,6 +108,26 @@ public class InterviewCode {
         return true;
     }
 
+    // static boolean isPrime(int n) {
+    // // Corner case
+    // for (int i = 2; i * i < n; i++) {
+    // if (n % i == 0) {
+    // return false;
+    // }
+    // }
+    // return true;
+    // }
+
+    // static boolean isPrime(int n) {
+    // // Corner case
+    // for (int i = 2; i < Math.sqrt(n); i++) {
+    // if (n % i == 0) {
+    // return false;
+    // }
+    // }
+    // return true;
+    // }
+
     public static void main(String[] args) {
         // System.out.println("Test");
 
@@ -138,7 +160,7 @@ public class InterviewCode {
         // System.out.println(" " + num);
         // }
 
-        // Example 7
+        // Example 10
         for (int i = 0; i < 10; i++) {
             if (isPrime(i)) {
                 System.out.println(i + " is prime");
