@@ -84,15 +84,15 @@ public class InterviewCode {
     // return array;
     // }
 
-    // static void reverse(int[] array) {
-    // for (int i = 0; i < array.length / 2; i++) {
-    // int temp = 0;
+    static void reverse(int[] array) {
+        for (int i = 0; i < array.length / 2; i++) {
+            int temp = 0;
 
-    // temp = array[i];
-    // array[i] = array[array.length - 1 - i];
-    // array[array.length - 1 - i] = temp;
-    // }
-    // }
+            temp = array[i];
+            array[i] = array[array.length - 1 - i];
+            array[array.length - 1 - i] = temp;
+        }
+    }
 
     // Example 10
     static boolean isPrime(int n) {
@@ -128,6 +128,40 @@ public class InterviewCode {
     // return true;
     // }
 
+    // Example 11
+    static int factorial(int n) {
+        if (n < 0)
+            return -1;
+        else if (n == 0)
+            return 1;
+        else
+            return n * factorial(n - 1);
+    }
+
+    // Example 12
+    static void permutation(String str) {
+        permutation(str, "");
+    }
+
+    static void permutation(String str, String prefix) {
+        if (str.length() == 0) {
+            System.out.println("str.length() == 0 prefix = " + prefix);
+            System.out.println(prefix);
+        } else {
+            for (int i = 0; i < str.length(); i++) {
+                String rem = str.substring(0, i) + str.substring(i + 1);
+                System.out.println("str : " + str);
+                System.out.println("str.substring(0, i)" + str.substring(0, i));
+                System.out.println("str.substring(i + 1)" + str.substring(i + 1));
+                System.out.println("rem : " + rem);
+                System.out.println("prefix : " + prefix);
+                System.out.println("str.charAt(i) : " + str.charAt(i));
+                System.out.println("prefix + str.charAt(i) : " + prefix + str.charAt(i));
+                permutation(rem, prefix + str.charAt(i));
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // System.out.println("Test");
 
@@ -161,12 +195,32 @@ public class InterviewCode {
         // }
 
         // Example 10
-        for (int i = 0; i < 10; i++) {
-            if (isPrime(i)) {
-                System.out.println(i + " is prime");
-            } else {
-                System.out.println(i + " is not prime");
-            }
-        }
+        // for (int i = 0; i < 10; i++) {
+        // if (isPrime(i)) {
+        // System.out.println(i + " is prime");
+        // } else {
+        // System.out.println(i + " is not prime");
+        // }
+        // }
+
+        // Example 11
+        // for (int i = 0; i < 10; i++) {
+        // // System.out.println(Integer.toString(factorial(i)));
+        // System.out.println(factorial(i));
+        // // System.out.println(factorial(i) + "");
+        // }
+
+        // Example 12
+        // for (int i = 0; i < 10; i++) {
+        // String str = "TempText" + Integer.toString(i);
+        // permutation(str);
+        // System.out.println("======");
+        // System.out.println(str);
+        // }
+
+        String str = "Te";
+        permutation(str);
+        System.out.println("======");
+        System.out.println(str);
     }
 }
