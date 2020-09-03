@@ -51,15 +51,29 @@ public class ArraysStrings {
 
     // 1.2 Check Permutation: Given two strings, write a method to decide if one is
     // a permutation of the other.
-    // static boolean isPermutation(final String strA, final String strB)
-    // {
-    // if(strA.length() != strB.length())
-    // return false;
+    static boolean isPermutation(String strA, String strB) {
+        if (strA.length() != strB.length())
+            return false;
 
-    // final Char[] strArrayA = strA.to
+        // char[] arrayA = strA.toCharArray();
+        // char[] arrayB = strB.toCharArray();
 
-    // return true;
-    // }
+        int[] asciiTable = new int[128];
+
+        for (int i = 0; i < strA.length(); i++) {
+            if (strA.charAt(i) < 0 || strA.charAt(i) > 127) {
+                return false;
+            }
+            asciiTable[strA.charAt(i)]++;
+        }
+
+        for (int i = 0; i < strB.length(); i++) {
+            if (--asciiTable[strB.charAt(i)] < 0)
+                return false;
+        }
+
+        return true;
+    }
 
     public static void main(final String[] args) {
 
@@ -98,5 +112,21 @@ public class ArraysStrings {
         // // sc.next());
         // }
 
+        // 1.2 Check Permutation: Given two strings, write a method to decide if one is
+        // a permutation of the other.
+
+        Scanner sc = new Scanner(System.in);
+        while (!sc.hasNext("exit")) {
+            // System.out.println("isUnique(a) : " + isUnique(sc.next()));
+            String strA = sc.next();
+            sc.hasNext();
+            String strB = sc.next();
+            System.out.println("isPermutation(a) : " + isPermutation(strA, strB));
+            // System.out.println(sc.hasNextInt() ? "(int) " + sc.nextInt()
+            // : sc.hasNextLong() ? "(long) " + sc.nextLong()
+            // : sc.hasNextDouble() ? "(double) " + sc.nextDouble()
+            // : sc.hasNextBoolean() ? "(boolean) " + sc.nextBoolean() : "(String) " +
+            // sc.next());
+        }
     }
 }
