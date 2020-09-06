@@ -17,6 +17,50 @@ public class ArraysStrings {
 
     // 1.1 Is Unique: Implement an algorithm to determine if a string has all unique
     // characters. What if you cannot use additional data structures?
+    // Javascript
+    // function isUnique(str)
+    // {
+    // let retVal = true;
+    // for(let i = 0; i < str.length; i++)
+    // {
+    // for(let j = i+1; j < str.length; j++)
+    // {
+    // // str[i] === str[j] ? retVal = false : retVal = true
+    // if(str[i] === str[j])
+    // {
+    // retVal = false;
+    // break;
+    // }
+    // // console.log(i,j);
+
+    // }
+    // if(retVal === false)
+    // break;
+    // }
+    // return retVal;
+    // }
+
+    // function isUnique(str)
+    // {
+    // for(let i = 0; i < str.length; i++)
+    // {
+    // for(let j = i+1; j < str.length; j++)
+    // {
+    // if(str[i] === str[j])
+    // return false;
+    // }
+    // }
+    // return true;
+    // }
+
+    // function isUnique(str) {
+    // for (let i = 0; i < str.length; i++)
+    // for (let j = i + 1; j < str.length; j++)
+    // if (str[i] === str[j]) return false;
+
+    // return true;
+    // }
+
     static boolean isUnique(final String str) {
         for (int i = 0; i < str.length(); i++) {
             for (int j = i + 1; j < str.length(); j++) {
@@ -51,6 +95,13 @@ public class ArraysStrings {
 
     // 1.2 Check Permutation: Given two strings, write a method to decide if one is
     // a permutation of the other.
+    // Javascript
+    // function isPermutation(a,b)
+    // {
+    // return ((a.length === b.length) && (a.split('').sort().join() ===
+    // b.split('').sort().join()));
+    // }
+
     static boolean isPermutation(String strA, String strB) {
         if (strA.length() != strB.length())
             return false;
@@ -73,6 +124,56 @@ public class ArraysStrings {
         }
 
         return true;
+    }
+
+    // 1.3 URLify: Write a method to replace all spaces in a string with '%20: You
+    // may assume that the string has sufficient space at the end to hold the
+    // additional characters, and that you are given the "true" length of the
+    // string. (Note: If implementing in Java, please use a character array so that
+    // you can perform this operation in place.)
+    // EXAMPLE
+    // Input: "Mr John Smith " J 13
+    // Output: "Mr%20J ohn%20Smith" =
+    // Javascript
+    // function URLify(string, length) {
+    // let retVal = [];
+    // retVal = [...string];
+    // // retVal = string.split('');
+    // // retVal = Array.from(string);
+    // // retVal = Object.assign([], string);
+
+    // console.log(url);
+    // for (let i = 0; i < 13; i++) {
+    // console.log(retVal[i], retVal[i] == " ");
+    // if (retVal[i] == " ") {
+    // retVal.splice(i, 1, "%02");
+    // i = i + 2;
+    // }
+    // }
+    // return retVal.join("");
+    // }
+
+    // let url = "Mr John Smith ";
+    // console.log(URLify(url, 13));
+
+    static String URLify(String url, int length) {
+        StringBuffer sb = new StringBuffer("");
+
+        System.out.println("url : " + url);
+        System.out.println("url.length() : " + url.length());
+
+        for (int i = 0; i < length; i++) {
+            char c = url.charAt(i);
+            System.out.println(i + " : " + c);
+            if (c == ' ') {
+                sb.append("%20");
+                System.out.println("c == '' sb.toString() : " + sb.toString());
+            } else {
+                sb.append(c);
+                System.out.println("c == '' sb.toString() : " + sb.toString());
+            }
+        }
+        return sb.toString();
     }
 
     public static void main(final String[] args) {
@@ -115,18 +216,33 @@ public class ArraysStrings {
         // 1.2 Check Permutation: Given two strings, write a method to decide if one is
         // a permutation of the other.
 
-        Scanner sc = new Scanner(System.in);
-        while (!sc.hasNext("exit")) {
-            // System.out.println("isUnique(a) : " + isUnique(sc.next()));
-            String strA = sc.next();
-            sc.hasNext();
-            String strB = sc.next();
-            System.out.println("isPermutation(a) : " + isPermutation(strA, strB));
-            // System.out.println(sc.hasNextInt() ? "(int) " + sc.nextInt()
-            // : sc.hasNextLong() ? "(long) " + sc.nextLong()
-            // : sc.hasNextDouble() ? "(double) " + sc.nextDouble()
-            // : sc.hasNextBoolean() ? "(boolean) " + sc.nextBoolean() : "(String) " +
-            // sc.next());
-        }
+        // Scanner sc = new Scanner(System.in);
+        // while (!sc.hasNext("exit")) {
+        // // System.out.println("isUnique(a) : " + isUnique(sc.next()));
+        // String strA = sc.next();
+        // sc.hasNext();
+        // String strB = sc.next();
+        // System.out.println("isPermutation(a) : " + isPermutation(strA, strB));
+        // // System.out.println(sc.hasNextInt() ? "(int) " + sc.nextInt()
+        // // : sc.hasNextLong() ? "(long) " + sc.nextLong()
+        // // : sc.hasNextDouble() ? "(double) " + sc.nextDouble()
+        // // : sc.hasNextBoolean() ? "(boolean) " + sc.nextBoolean() : "(String) " +
+        // // sc.next());
+        // }
+
+        // 1.3 URLify: Write a method to replace all spaces in a string with '%20: You
+        // may assume that the string has sufficient space at the end to hold the
+        // additional characters, and that you are given the "true" length of the
+        // string. (Note: If implementing in Java, please use a character array so that
+        // you can perform this operation in place.)
+        // EXAMPLE
+        // Input: "Mr John Smith " J 13
+        // Output: "Mr%20J ohn%20Smith"
+
+        // Scanner sc = new Scanner(System.in);
+        // while (!sc.hasNext("exit")) {
+        // System.out.println("URLify(a) : " + URLify(sc.next(), 100));
+        // }
+        System.out.println("URLify(a) : " + URLify("Mr John Smith ", 13));
     }
 }
