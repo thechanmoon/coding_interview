@@ -93,6 +93,7 @@ public class SortSearching {
         return -1;
     }
 
+    // O(log n)
     public static int binarySearchRecursive(int[] a, int x, int low, int high) {
         if (low > high)
             return -1; // Error

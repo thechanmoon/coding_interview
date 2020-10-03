@@ -11,7 +11,7 @@ public class Memoization {
 
             // base cases
         } else if (n == 0 || n == 1) {
-            return n;
+            return 1;
         }
 
         // see if we've already calculated this
@@ -29,6 +29,7 @@ public class Memoization {
         return result;
     }
 
+    // O(2ⁿ) // Test ₀₁₂₃₄₅₆₇₈₉ ¹²³⁴⁵⁶⁷⁸⁹⁰ ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸ
     public static int fibonachi_recursive(int n) {
 
         if (n < 0) {
@@ -37,7 +38,7 @@ public class Memoization {
 
         // base cases
         if (n == 0 || n == 1) {
-            return n;
+            return 1;
         }
 
         // System.out.printf("computing fib(%d)\n", n);
@@ -45,12 +46,17 @@ public class Memoization {
     }
 
     public static int fibonachi(int n, int[] r) {
-        if (n < 0) {
+        if (n < 0)
             throw new IllegalArgumentException("Index was negative. No such thing as a negative index in a series.");
-        } else if (n < 2)
+        else if (n < 2)
             return r[n] = 1;
-        else
+        else if (r[n] > 0) {
+            System.out.printf("computing r[n] > 1 fibonachi(%d)\n", n);
+            return r[n];
+        } else {
+            System.out.printf("computing else fibonachi(%d)\n", n);
             return r[n] = fibonachi(n - 1, r) + fibonachi(n - 2, r);
+        }
     }
 
     public static void main(final String[] args) {
@@ -64,6 +70,10 @@ public class Memoization {
         // System.out.println(fibonachi(i, array));
 
         // System.out.println(fibonachi_recursive(10));
-        System.out.println(fibonach_hashmap(10));
+        // System.out.println(fibonachi(0, array));
+        // System.out.println(fibonachi(1, array));
+        System.out.println(fibonachi(3, array));
+        // System.out.println("=================");
+        // System.out.println(fibonach_hashmap(2));
     }
 }
